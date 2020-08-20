@@ -1,3 +1,5 @@
+## Testando POO em Python - Curso Alura
+## Marcus Marçal - marcus.marcal@gmail.com
 
 class Conta:
     def __init__(self, cpf, nome, saldo, limite = 1000.00):
