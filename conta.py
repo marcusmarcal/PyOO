@@ -22,3 +22,11 @@ class Conta:
     def sacar(self, valor):
         self.__saldo -= valor
 
+    def transferir(self, valor, destino):
+        self.sacar(valor)
+        destino.depositar(valor)
+
+
+# Exemplos de uso...
+# conta1 = Conta("956.605.500-53","Marcus Marçal", 200)
+# conta2 = Conta("973.952.340.49","Marília Diefenthäler", 2000)
