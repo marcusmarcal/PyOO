@@ -1,6 +1,8 @@
 ## Testando POO em Python - Curso Alura
 ## Marcus Marçal - marcus.marcal@gmail.com
 ## Branch DEV
+from builtins import property
+
 
 class Conta:
     def __init__(self, cpf, nome, saldo, limite = 1000.00):
@@ -26,13 +28,23 @@ class Conta:
         self.sacar(valor)
         destino.depositar(valor)
 
-    def get_saldo(self):  # nomenclatura correta para getter (get_...)
+    @property
+    def saldo(self):  # Outra forma de usar o getter
         return self.__saldo
 
-    def get_limite(self):
-        return self.__limite
+    @property
+    def nome(self):
+        return self.__nome
 
-    def set_limite(self, limite): # Nomenclatura correta para setter (set_...)
+    @property
+    def cpf(self):
+        return self.__cpf
+
+    @property
+    def limite(self):
+        return self.__limite
+    @limite.setter
+    def limite(self, limite): # Alterado setter para novo formato
         self.__limite = limite
 
 # Exemplos de uso...
