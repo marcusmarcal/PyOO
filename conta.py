@@ -26,6 +26,14 @@ class Conta:
         self.sacar(valor)
         destino.depositar(valor)
 
+    def get_saldo(self):  # nomenclatura correta para getter (get_...)
+        return self.__saldo
+
+    def get_limite(self):
+        return self.__limite
+
+    def set_limite(self, limite): # Nomenclatura correta para setter (set_...)
+        self.__limite = limite
 
 # Exemplos de uso...
 # conta1 = Conta("956.605.500-53","Marcus Marçal", 200)
