@@ -1,8 +1,6 @@
 ## Testando POO em Python - Curso Alura
 ## Marcus Marçal - marcus.marcal@gmail.com
 ## Branch DEV
-from builtins import property
-
 
 class Conta:
     def __init__(self, cpf, nome, saldo, limite = 1000.00):
@@ -11,6 +9,10 @@ class Conta:
         self.__saldo = saldo
         self.__limite = limite
 
+    @staticmethod
+    def banco():
+        return "001"
+
     def extrato(self):
         print("Nome do Cliente: {}".format(self.__nome))
         print("CPF: {}".format(self.__cpf))
@@ -18,11 +20,18 @@ class Conta:
         print("Limite : {}".format(self.__limite))
         print("Saldo disponível: {}".format(self.__saldo + self.__limite))
 
+    def __pode_sacar(self, valor):
+        disponivel = self.__saldo + self.__limite
+        return valor <= disponivel
+    
     def depositar(self, valor):
         self.__saldo += valor
 
     def sacar(self, valor):
-        self.__saldo -= valor
+        if self.__pode_sacar(valor):
+            self.__saldo -= valor
+        else:
+            print("Não é possível sacar. Saldo: {}. Limite: {}".format(self.__saldo, self.__limite))
 
     def transferir(self, valor, destino):
         self.sacar(valor)
@@ -43,6 +52,7 @@ class Conta:
     @property
     def limite(self):
         return self.__limite
+
     @limite.setter
     def limite(self, limite): # Alterado setter para novo formato
         self.__limite = limite
